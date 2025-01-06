@@ -1,0 +1,146 @@
+// * import functions
+@use 'tools/functions' as func;
+// * import variables
+@use 'tools/variables' as var;
+
+// =======================================================================================================
+
+.header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 20;
+    width: 100%;
+
+    &__body {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: func.rem(30);
+        align-items: center;
+        min-height: func.rem(50);
+        padding: func.rem(5) func.rem(0);
+    }
+
+    &__container {}
+}
+
+.menu {
+
+    &__body {
+        @media (min-width: var.$tablet) {
+            display: flex;
+            align-items: center;
+            gap: func.rem(60);
+        }
+
+        @media (max-width: var.$tablet) {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            z-index: 10;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            transition: right 0.3s ease 0s;
+            background-color: rgba(0, 0, 0, .5);
+            padding: func.rem(70) func.rem(30) func.rem(30) func.rem(30);
+            display: flex;
+            flex-direction: column;
+            gap: func.rem(15);
+
+            &._active {
+                right: 0;
+            }
+        }
+    }
+
+    &__list {
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: func.rem(20);
+        row-gap: func.rem(10);
+        text-transform: uppercase;
+
+        @media (min-width: var.$tablet) {
+            align-items: center;
+        }
+
+        @media (max-width: var.$tablet) {
+            flex: 1 1 auto;
+            flex-direction: column;
+            font-size: func.rem(18);
+        }
+    }
+
+    &__item {}
+
+    &__link {
+        font-weight: 500;
+        line-height: func.part(26, 16);
+        color: var.$mainWhiteColor;
+    }
+}
+
+// =======================================================================================================
+.burger {
+    display: none;
+    position: relative;
+    height: func.rem(18);
+    width: func.rem(30);
+    z-index: 11;
+    background-color: transparent;
+
+    &::before,
+    &::after,
+    span {
+        position: absolute;
+        right: 0;
+        height: 10%;
+        width: 100%;
+        background-color: var.$mainWhiteColor;
+        transition: all 0.3s ease 0s;
+    }
+
+    &::before,
+    &::after {
+        content: "";
+    }
+
+    &::before {
+        top: 0;
+    }
+
+    &::after {
+        width: 50%;
+        bottom: 0;
+    }
+
+    span {
+        width: 75%;
+        top: 50%;
+        transform: scale(1) translate(0px, -50%);
+    }
+
+    &._active {
+
+        span {
+            transform: scale(0) translate(0px, -50%);
+        }
+
+        &::before {
+            top: 50%;
+            transform: rotate(-45deg) translate(0px, -50%);
+        }
+
+        &::after {
+            width: 100%;
+            bottom: 50%;
+            transform: rotate(45deg) translate(0px, 50%);
+        }
+    }
+
+    @media (max-width: var.$tablet) {
+        display: block;
+    }
+}

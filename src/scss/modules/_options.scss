@@ -1,0 +1,41 @@
+@use 'tools/functions' as func;
+@use 'tools/variables' as var;
+
+// =======================================================================================================
+body {
+    font-family: var.$mainFont;
+    font-weight: 400;
+    font-size: func.rem(16);
+    color: var.$mainColor;
+
+    &._lock {
+        overflow: hidden;
+    }
+}
+
+// =======================================================================================================
+// * сontainer
+$containerWidth: func.rem(1170);
+$containerPaddingX: func.rem(15);
+
+._container {
+    max-width: calc($containerWidth + $containerPaddingX * 2);
+    margin: 0 auto;
+    padding: 0px $containerPaddingX;
+}
+
+// =======================================================================================================
+// * wrapper
+.wrapper {
+    overflow: hidden;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    // press footer
+    .main {
+        flex: 1 1 auto;
+        // fix slider
+        min-width: 0;
+    }
+}

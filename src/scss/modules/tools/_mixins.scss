@@ -1,0 +1,6 @@
+@use 'sass:math';
+@use 'functions' as func;
+
+@mixin fluid-text($max: 48, $min: 16) {
+    font-size: func.fluid($max, $min);
+}
