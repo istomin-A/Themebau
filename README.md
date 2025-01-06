@@ -1,1 +1,1 @@
-https://istomin-a.github.io/Themebau/
+https://istomin-a.github.io/Themebau/dist/
